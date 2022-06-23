@@ -1,6 +1,7 @@
 import { CheckCircle } from 'phosphor-react'
 import LessonProps from './LessonProps'
 import moment from 'moment'
+import { Link } from 'react-router-dom'
 
 export function Lesson(props: LessonProps) {
   const renderLessonType = () => {
@@ -29,7 +30,7 @@ export function Lesson(props: LessonProps) {
   }
 
   return  (
-    <a  href="#">
+    <Link  to={`/aulas/${props.slug}`}>
       <span className="text-gray-300" >{ renderFormattedDate() }</span>
       <div className="rounded border-gray-500 border p-4 mt-2">
         <header className="flex items-center justify-between">
@@ -44,6 +45,6 @@ export function Lesson(props: LessonProps) {
           { props.title }
         </strong>
       </div>
-    </a>
+    </Link>
   )
 }
