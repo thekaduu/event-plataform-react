@@ -1,26 +1,27 @@
 import { CaretRight, DiscordLogo, FileArrowDown, Lightning, Image } from "phosphor-react";
-import { VideoPlayer } from "./VideoPlayer/Index";
+import { VideoPlayer } from "../VideoPlayer/Index";
+import { ContentProps } from "./ContentProps";
 
-export function Content() {
+export function Content(props: ContentProps) {
   return (
     <div className="flex-1">
-      <VideoPlayer videoId="KJj70dBgRPo" />
+      <VideoPlayer videoId={props.lesson.videoId || ''} />
       <div className="p-8 max-w-[1100px] mx-auto">
         <div id="description" className="flex justify-start gap-16">
           <div className="flex-1">
             <h1 className="text-bold text-2xl">
-              Aula 01 - Criando o projeto e realizando o setup inicial
+              { props.lesson.title }
             </h1>
             <p className="mt-4 leading-relaxed text-gray-200">
-              Nessa aula vamos dar início ao projeto criando a estrutura base da aplicação utilizando ReactJS, Vite e TailwindCSS. Vamos também realizar o setup do nosso projeto no GraphCMS criando as entidades da aplicação e integrando a API GraphQL gerada pela plataforma no nosso front-end utilizando Apollo Client.
+              { props.lesson.description }
             </p>
 
             <div className="flex gap-4 mt-6">
-              <img src="https://avatars.githubusercontent.com/u/2254731?v=4" alt="foto do professor" className="h-16 w-16 rounded-full border-2 border-blue-500" />
+              <img src={props.lesson.teacher?.avatarURL} alt="foto do professor" className="h-16 w-16 rounded-full border-2 border-blue-500" />
 
               <div className="leading-relaxed">
-                <strong className="text-2xl font-bold block">Diego Fernandes</strong>
-                <span className="text-gray-200 text-sm block">Co-fundador e CTO na Rocketseat </span>
+                <strong className="text-2xl font-bold block">{props.lesson.teacher?.name}</strong>
+                <span className="text-gray-200 text-sm block">{props.lesson.teacher?.bio} </span>
               </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
-import { GET_LIST_LESSONS, GetListLessonsResponse, LessonInterface } from "../application/Queries";
+import { LessonInterface } from "../application/interfaces/LessonInterface";
+import { GET_LIST_LESSONS, GetListLessonsResponse } from "../application/Queries";
 import { Lesson } from "./Lesson/Index";
 
 
