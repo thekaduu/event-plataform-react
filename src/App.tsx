@@ -1,6 +1,5 @@
-import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import moment from "moment";
-import Event from "./pages/Event"
+import { Router } from "./Router";
 
 
 moment.defineLocale('pt-br', {
@@ -11,18 +10,9 @@ moment.defineLocale('pt-br', {
   weekdaysMin : 'dom_2ª_3ª_4ª_5ª_6ª_sáb'.split('_')
 });
 
-const client = new ApolloClient({
-  uri: 'https://api-sa-east-1.graphcms.com/v2/cl4r0wwcu0g7301z35zrhgpvy/master',
-  cache: new InMemoryCache()
-});
-
 function App() {
   return (
-    <div>
-      <ApolloProvider client={client}>
-        <Event />
-      </ApolloProvider>
-    </div>
+    <Router />
   )
 }
 

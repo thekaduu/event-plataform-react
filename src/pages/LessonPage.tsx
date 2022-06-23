@@ -2,7 +2,7 @@ import { Header } from '../components/Header'
 import { Sidebar } from '../components/Sidebar'
 import { Content } from '../components/Content'
 
-export default function Event() {
+export default function LessonPage() {
   return (
     <div className='flex flex-col min-h-screen'>
       <Header />
