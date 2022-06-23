@@ -5,7 +5,19 @@ import { ContentProps } from "./ContentProps";
 export function Content(props: ContentProps) {
   return (
     <div className="flex-1">
-      <VideoPlayer videoId={props.lesson.videoId || ''} />
+      {
+        props.lesson.videoId ?
+        <VideoPlayer videoId={props.lesson.videoId} /> :
+        (
+          <div className="bg-black flex justify-center">
+            <div className="w-full h-full max-w-[1100px] max-h-[60vh] aspect-video">
+              <h1>Carregando</h1>
+            </div>
+          </div>
+        )
+
+      }
+
       <div className="p-8 max-w-[1100px] mx-auto">
         <div id="description" className="flex justify-start gap-16">
           <div className="flex-1">

@@ -1,9 +1,11 @@
-import { CheckCircle } from 'phosphor-react'
+import { CheckCircle, Lock } from 'phosphor-react'
 import LessonProps from './LessonProps'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 
 export function Lesson(props: LessonProps) {
+  const avialableAt =  moment(props.availableAt)
+  const now = moment()
   const renderLessonType = () => {
     if (props.type == 'live') {
       return (
@@ -29,15 +31,34 @@ export function Lesson(props: LessonProps) {
     return `${day} • ${date} de ${month} • ${hour}h${minutes}`
   }
 
+  let cardClassName = 'rounded border-gray-500 border p-4 mt-2 group-hover:border-green-500 transition-colors'
+  let linkTo = `/aulas/${props.slug}`
+
+  let renderLessonHeader = (
+    <span className="text-sm flex items-center gap-2 text-blue-500 font-medium">
+      <CheckCircle size={20} />
+      Conteúdo liberado
+    </span>
+  )
+
+  if (avialableAt.isAfter(now)) {
+    cardClassName = 'rounded border-gray-500 border p-4 mt-2 cursor-not-allowed'
+    linkTo = '#'
+    renderLessonHeader = (
+      <span className="text-sm flex items-center gap-2 text-orange-500 font-medium">
+        <Lock size={20} />
+        Em breve
+      </span>
+    )
+  }
+
+
   return  (
-    <Link  to={`/aulas/${props.slug}`}>
+    <Link to={linkTo} className="group">
       <span className="text-gray-300" >{ renderFormattedDate() }</span>
-      <div className="rounded border-gray-500 border p-4 mt-2">
+      <div className={cardClassName}>
         <header className="flex items-center justify-between">
-          <span className="text-sm flex items-center gap-2 text-blue-500 font-medium">
-            <CheckCircle size={20} />
-            Conteúdo liberado
-          </span>
+          { renderLessonHeader }
           {renderLessonType()}
         </header>
 
