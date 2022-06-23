@@ -37,8 +37,8 @@ export function Content() {
         </div>
 
         <div id="additionalContent" className="mt-20 gap-8 grid grid-cols-2">
-          <a href="#" className="rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 bg-gray-700 transition-colors">
-            <div className="bg-green-700 h-full p-6 flex items-center">
+          <a href="#" className="rounded overflow-hidden flex items-stretch gap-6 group hover:bg-gray-600 bg-gray-700 transition-colors">
+            <div className="bg-green-500 h-full p-6 flex items-center group-hover:bg-green-700 transition-colors">
               <FileArrowDown size={40} />
             </div>
 
@@ -57,8 +57,8 @@ export function Content() {
           </a>
 
 
-          <a href="#" className="rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 bg-gray-700 transition-colors">
-            <div className="bg-green-700 h-full p-6 flex items-center">
+          <a href="#" className="rounded overflow-hidden flex group items-stretch gap-6 hover:bg-gray-600 bg-gray-700 transition-colors">
+            <div className="bg-green-500 h-full p-6 flex items-center group-hover:bg-green-700 transition-colors">
               <Image size={40} />
             </div>
 
