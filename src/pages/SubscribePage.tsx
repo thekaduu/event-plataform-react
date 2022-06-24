@@ -3,8 +3,7 @@ import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CREATE_SUBSCRIBER } from "../application/Mutations";
 import Logo from "../components/Logo";
-
-
+import codeMockup from '../assets/images/code-mockup.png'
 
 export function SubscribePage() {
   const navigate = useNavigate()
@@ -65,7 +64,7 @@ export function SubscribePage() {
       </div>
 
       <div className="max-w-[1100px] w-full mx-auto flex items-center justify-between">
-        <img src="/src/assets/images/code-mockup.png" alt="" />
+        <img src={codeMockup} alt="exemplo de código" />
       </div>
     </div>
   )
