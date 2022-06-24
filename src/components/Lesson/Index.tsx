@@ -2,8 +2,12 @@ import { CheckCircle, Lock } from 'phosphor-react'
 import LessonProps from './LessonProps'
 import moment from 'moment'
 import { Link, useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { closeMenu } from '../../redux/MenuSlice'
 
 export function Lesson(props: LessonProps) {
+  const dispatch = useDispatch();
+
   const { slug } = useParams()
   const isActive = slug == props.slug
 
@@ -42,9 +46,8 @@ export function Lesson(props: LessonProps) {
     )
   }
 
-
   return  (
-    <Link to={linkTo} className={`group lesson-card ${isActive ? 'active' : ''}`}>
+    <Link to={linkTo} onClick={() => dispatch(closeMenu())} className={`group lesson-card ${isActive ? 'active' : ''}`}>
       <span className="lesson-date" >{ renderFormattedDate() }</span>
       <div className='lesson-body group-hover:border-green-500 transition-colors'>
         <header className="flex items-center justify-between">

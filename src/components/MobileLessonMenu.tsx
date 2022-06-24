@@ -18,18 +18,18 @@ const renderListLessons = (lessons: Array<LessonInterface>) => {
   })
 }
 
-export function Sidebar() {
+export function MobileLessonMenu() {
   const { data } = useQuery<GetListLessonsResponse>(GET_LIST_LESSONS)
   const lessons = data?.lessons || []
 
 
   return (
-    <aside className="w-[348px] hidden lg:block bg-gray-700 p-6 border-l border-gray-600">
+    <div className="w-full min-h-screen bg-gray-700 p-6 border-l border-gray-600">
       <span className="font-bold text-2xl pb-6 border-b border-gray-500 block mb-6">Cronograma de aulas</span>
 
       <div className="flex flex-col gap-8">
        { renderListLessons(lessons) }
       </div>
-    </aside>
+    </div>
   )
 }
