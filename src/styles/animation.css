@@ -1,0 +1,21 @@
+
+.fadeInDown {
+  animation: fadeInDown 1s;
+  animation-timing-function: ease;
+}
+
+.fadeInRight {
+  animation: fadeInRight 1s;
+  animation-timing-function: ease;
+}
+
+
+@keyframes fadeInDown {
+ from { margin-top: -60px; opacity: 0 }
+ to {  margin-top: 0px; opacity: 1 }
+}
+
+@keyframes fadeInRight {
+ from { margin-left: -60px; opacity: 0 }
+ to {  margin-left: 0px; opacity: 1 }
+}

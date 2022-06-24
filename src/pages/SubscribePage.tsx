@@ -9,20 +9,26 @@ export function SubscribePage() {
   const navigate = useNavigate()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [error, setError] = useState('')
   const [createSubscriber, { loading }] = useMutation(CREATE_SUBSCRIBER)
 
   const submitSubscribeForm = async (event: FormEvent) => {
-    event.preventDefault()
+    try {
+      setError('')
+      event.preventDefault()
 
-    await createSubscriber({ variables: {name, email} })
+      await createSubscriber({ variables: {name, email} })
 
-    navigate('/aulas/abertura-ignite-lab-o-poder-do-react-js')
+      navigate('/aulas/abertura-ignite-lab-o-poder-do-react-js')
+    }catch(e) {
+      setError('Ocorreu um error inesperado')
+    }
   }
 
   return (
     <div className="min-h-screen  bg-cover bg-no-repeat flex flex-col bg-blur">
       <div className="max-w-[1100px] flex-col md:flex-row mt-2 flex items-center justify-between w-full mx-auto  md:mt-[121px]">
-        <div className="max-w-[640px] p-6 md:pr-[200px]">
+        <div className="max-w-[640px] p-6 md:pr-[200px] fadeInDown ">
           <Logo className="mx-auto md:mx-0 block"/>
 
           <h1 className="text-3xl text-center md:text-left md:text-[2.5rem] mt-8">
@@ -34,7 +40,7 @@ export function SubscribePage() {
           </p>
         </div>
 
-        <div className="py-8 px-6 md:p-8 bg-gray-700 border w-full border-gray-500 rounded max-w-[391px]">
+        <div className="fadeInDown py-8 px-6 md:p-8 bg-gray-700 border w-full border-gray-500 rounded max-w-[391px]">
           <span className="font-bold text-white mb-6 text-[18px] md:text-2xl block" >Inscreva-se gratuitamente</span>
 
           <form onSubmit={submitSubscribeForm} className="flex flex-col gap-2 w-full">
@@ -52,6 +58,10 @@ export function SubscribePage() {
               className="active:border-green-500 hover:border-green-500  border border-gray-900 mb-6 p-2 bg-gray-900 tex-white rounded"
             />
 
+            {
+              error ? <p className="text-red-600 text-bold">{error}</p> : <></>
+            }
+
             <button
               type="submit"
               disabled={loading}
@@ -63,7 +73,7 @@ export function SubscribePage() {
         </div>
       </div>
 
-      <div className="max-w-[1100px] w-full mx-auto flex items-center justify-between">
+      <div className="fadeInDown max-w-[1100px] w-full mx-auto flex items-center justify-between">
         <img src={codeMockup} alt="exemplo de código" />
       </div>
     </div>
