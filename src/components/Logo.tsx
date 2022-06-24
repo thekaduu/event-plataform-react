@@ -1,4 +1,8 @@
-export default function Logo() {
+interface LogoProps {
+  className?: string
+}
+
+export default function Logo(props: LogoProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,6 +10,7 @@ export default function Logo() {
       height="34"
       fill="none"
       viewBox="0 0 237 34"
+      className={props.className}
     >
       <path
         fill="#fff"

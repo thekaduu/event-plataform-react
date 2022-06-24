@@ -1,22 +1,14 @@
 import { CheckCircle, Lock } from 'phosphor-react'
 import LessonProps from './LessonProps'
 import moment from 'moment'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 export function Lesson(props: LessonProps) {
+  const { slug } = useParams()
+  const isActive = slug == props.slug
+
   const avialableAt =  moment(props.availableAt)
   const now = moment()
-  const renderLessonType = () => {
-    if (props.type == 'live') {
-      return (
-        <span className="text-xs rounded py-[0.125rem] px-2 border border-green-300 text-green-300 font-bold">AO VIVO</span>
-      )
-    }
-
-    return  (
-      <span className="text-xs rounded py-[0.125rem] px-2 border border-green-300 font-bold">AULA PRÁTICA</span>
-    )
-  }
 
   const renderFormattedDate = (): string => {
     moment.locale('pt-BR')
@@ -31,18 +23,16 @@ export function Lesson(props: LessonProps) {
     return `${day} • ${date} de ${month} • ${hour}h${minutes}`
   }
 
-  let cardClassName = 'rounded border-gray-500 border p-4 mt-2 group-hover:border-green-500 transition-colors'
   let linkTo = `/aulas/${props.slug}`
 
   let renderLessonHeader = (
-    <span className="text-sm flex items-center gap-2 text-blue-500 font-medium">
+    <span className="lesson-content-free text-sm flex items-center gap-2 text-blue-500 font-medium">
       <CheckCircle size={20} />
       Conteúdo liberado
     </span>
   )
 
   if (avialableAt.isAfter(now)) {
-    cardClassName = 'rounded border-gray-500 border p-4 mt-2 cursor-not-allowed'
     linkTo = '#'
     renderLessonHeader = (
       <span className="text-sm flex items-center gap-2 text-orange-500 font-medium">
@@ -54,15 +44,17 @@ export function Lesson(props: LessonProps) {
 
 
   return  (
-    <Link to={linkTo} className="group">
-      <span className="text-gray-300" >{ renderFormattedDate() }</span>
-      <div className={cardClassName}>
+    <Link to={linkTo} className={`group lesson-card ${isActive ? 'active' : ''}`}>
+      <span className="lesson-date" >{ renderFormattedDate() }</span>
+      <div className='lesson-body group-hover:border-green-500 transition-colors'>
         <header className="flex items-center justify-between">
           { renderLessonHeader }
-          {renderLessonType()}
+          <span className={`lesson-type ${props.type}`}>
+            { props.type == 'live' ? 'AO VIVO' : 'AULA PRÁTICA' }
+          </span>
         </header>
 
-        <strong className="mt-5 block text-gray-200">
+        <strong className="lesson-title">
           { props.title }
         </strong>
       </div>
