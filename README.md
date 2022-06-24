@@ -4,7 +4,7 @@ Esse projeto tem como fim apenas colocar em práticas conhecimentos de React e G
 
 Aulas foram ministradas pela RocketSeat.
 
-[Link para o projeto no Vercel](https://event-plataform-react-thekaduu.vercel.app/aulas/aula-2-estrutura-visual-do-projeto)
+[Link para o projeto no Vercel](https://event-plataform-react-thekaduu.vercel.app/)
 
 ![Plataforma - Desktop](https://user-images.githubusercontent.com/5381824/175322716-90299f6d-df05-4f65-8f0c-3cd57ae4afe5.png)
 
