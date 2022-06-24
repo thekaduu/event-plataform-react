@@ -1,9 +1,21 @@
 import { List, X } from "phosphor-react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { closeMenu, openMenu } from "../redux/MenuSlice";
 import Logo from "./Logo";
 
 export function Header() {
-  const [openMenu, setOpenMenu] = useState(false)
+  const isOpenMenu = useSelector((state:any) => state.menu.open)
+  const dispatch = useDispatch()
+
+  const open = () => {
+    dispatch(openMenu())
+  }
+
+  const close = () => {
+    dispatch(closeMenu())
+  }
+
   return (
     <header className="w-full py-5 flex items-center justify-between px-6 lg:px-0  lg:justify-center bg-gray-700 border-b border-gray-600 ">
       <Logo />
@@ -12,8 +24,8 @@ export function Header() {
 
         <div className="text-blue-500">
           {
-            !openMenu ? <List size={32} onClick={() => setOpenMenu(!openMenu)} /> :
-            <X size={32} onClick={() => setOpenMenu(!openMenu)} />
+            !isOpenMenu ? <List size={32} onClick={open} /> :
+            <X size={32} onClick={close} />
           }
         </div>
       </div>
