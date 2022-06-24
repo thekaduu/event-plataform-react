@@ -19,7 +19,7 @@ export function Content(props: ContentProps) {
       }
 
       <div className="p-8 max-w-[1100px] mx-auto">
-        <div id="description" className="flex justify-start gap-16">
+        <div id="description" className="flex flex-col lg:flex-row justify-start gap-6 md:gap-16">
           <div className="flex-1">
             <h1 className="text-bold text-2xl">
               { props.lesson.title }
@@ -38,8 +38,8 @@ export function Content(props: ContentProps) {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
-            <a href="#" className="p-4 text-sm bg-green-500 flex gap-2 items-center rounded font-bold uppercase hover:bg-green-700 transition-colors">
+          <div className="flex flex-col md:flex-row lg:flex-col gap-4">
+            <a href="#" className="p-4 text-sm bg-green-500 flex gap-2 items-center rounded justify-center md:justify-start font-bold uppercase hover:bg-green-700 transition-colors">
               <DiscordLogo size={20} /> COMUNIDADE NO DISCORD
             </a>
 
@@ -49,17 +49,17 @@ export function Content(props: ContentProps) {
           </div>
         </div>
 
-        <div id="additionalContent" className="mt-20 gap-8 grid grid-cols-2">
-          <a href="#" className="rounded overflow-hidden flex items-stretch gap-6 group hover:bg-gray-600 bg-gray-700 transition-colors">
+        <div id="additionalContent" className="mt-16 md:mt-20 gap-8 grid lg:grid-cols-2">
+          <a href="#" className="rounded overflow-hidden flex items-stretch gap-4 md:gap-6 group hover:bg-gray-600 bg-gray-700 transition-colors">
             <div className="bg-green-500 h-full p-6 flex items-center group-hover:bg-green-700 transition-colors">
               <FileArrowDown size={40} />
             </div>
 
             <div className="py-6 leading-relaxed">
-              <span className="text-bold text-2xl">
+              <span className="text-bold text-xl md:text-2xl">
                 Material complementar
               </span>
-              <p className="mt-2 text-gray-200 leading-relaxed">
+              <p className="mt-2 text-gray-200 text-xs md:text-xl leading-relaxed">
                 Acesse o material complementar para acelerar o seu desenvolvimento
               </p>
             </div>
@@ -70,16 +70,16 @@ export function Content(props: ContentProps) {
           </a>
 
 
-          <a href="#" className="rounded overflow-hidden flex group items-stretch gap-6 hover:bg-gray-600 bg-gray-700 transition-colors">
+          <a href="#" className="rounded overflow-hidden flex items-stretch gap-4 md:gap-6 group hover:bg-gray-600 bg-gray-700 transition-colors">
             <div className="bg-green-500 h-full p-6 flex items-center group-hover:bg-green-700 transition-colors">
               <Image size={40} />
             </div>
 
             <div className="py-6 leading-relaxed">
-              <span className="text-bold text-2xl">
+              <span className="text-bold text-xl md:text-2xl">
                 Wallpapers exclusivos
               </span>
-              <p className="mt-2 text-gray-200 leading-relaxed">
+              <p className="mt-2 text-gray-200 text-xs md:text-xl leading-relaxed">
                 Baixe wallpapers exclusivos do Ignite Lab e personalize a sua máquina
               </p>
             </div>
