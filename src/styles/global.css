@@ -5,3 +5,45 @@
 body {
   @apply bg-gray-900 text-gray-100;
 }
+
+.lesson-card .lesson-date {
+  @apply text-gray-300;
+}
+
+.lesson-card .lesson-body {
+  @apply rounded border-gray-500 border p-4 mt-2 ;
+}
+
+
+.lesson-type {
+  @apply text-xs rounded py-[0.125rem] px-2 border border-green-300 font-bold;
+}
+
+.lesson-type .live {
+  @apply text-xs rounded py-[0.125rem] px-2 border border-green-300 text-green-300 font-bold
+}
+
+
+.lesson-card .lesson-title {
+  @apply mt-5 block text-gray-200
+}
+
+
+
+/** Card da aula ativado */
+
+.lesson-card.active .lesson-body{
+  @apply bg-green-500;
+}
+
+.lesson-card.active .lesson-title{
+  @apply mt-5 block text-white
+}
+
+.lesson-card.active .lesson-type {
+  @apply border-white text-white;
+}
+
+.lesson-card.active .lesson-content-free {
+  @apply text-white;
+}
